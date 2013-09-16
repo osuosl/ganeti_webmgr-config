@@ -141,3 +141,9 @@ RAPI_CONNECT_TIMEOUT = 3
 #     way of enabled a secure method to pull sshkeys from ganeti web manager
 # Remove the # mark to uncomment and replace CHANGE_ME with a secure value.
 # WEB_MGR_API_KEY = 'CHANGE_ME'
+#
+# Just like SECRET_KEY, you can load WEB_MGR_API_KEY contents from either an
+# environment variable or a file.  Simply use one of the following helpers:
+# WEB_MGR_API_KEY = load_setting_env('GWM_MGR_API_KEY')
+# WEB_MGR_API_KEY = load_setting_file('./.secrets/API_KEY.txt')
+# WEB_MGR_API_KEY = load_setting_file('./.secrets/API_KEY.txt', create=True)
