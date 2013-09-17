@@ -1,4 +1,6 @@
 # coding: utf-8
+### WARNING ###
+#  DON'T CHANGE THIS FILE'S NAME unless you perfectly know what you're doing  #
 
 try:
     from ganeti_webmgr.ganeti_web.settings.local import *
