@@ -1,5 +1,5 @@
 # coding: utf-8
-### WARNING ###
+################################### WARNING ###################################
 #  DON'T CHANGE THIS FILE'S NAME unless you perfectly know what you're doing  #
 
 try:
@@ -29,9 +29,11 @@ SECRET_KEY = 'CHANGE_ME'
 # helpers that load this setting from either environment variable or from
 # a file.  In the latter case you can create that file, if it doesn't exist
 # yet, with random value.
-# SECRET_KEY = load_setting_env('GWM_SECRET_KEY')
-# SECRET_KEY = load_setting_file('./.secrets/SECRET_KEY.txt')
-# SECRET_KEY = load_setting_file('./.secrets/SECRET_KEY.txt', create=True)
+# SECRET_KEY = load_secret(env='GWM_SECRET_KEY')
+# SECRET_KEY = load_secret(env='', file='./.secrets/SECRET_KEY.txt')
+# SECRET_KEY = load_secret(env='', file='./.secrets/SECRET_KEY.txt',
+#                          create_file=True, overwrite_file=False,
+#                          secret_length=50)
 
 
 ###############################################################################
@@ -42,7 +44,7 @@ DATABASES = {
     ### SQLite configuration
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': root('ganeti.db'),
+        'NAME': 'ganeti.db',
         'USER': '',      # not used with SQLite
         'PASSWORD': '',  # not used with SQLite
         'HOST': '',      # not used with SQLite
@@ -149,3 +151,6 @@ RAPI_CONNECT_TIMEOUT = 3
 # WEB_MGR_API_KEY = load_setting_env('GWM_MGR_API_KEY')
 # WEB_MGR_API_KEY = load_setting_file('./.secrets/API_KEY.txt')
 # WEB_MGR_API_KEY = load_setting_file('./.secrets/API_KEY.txt', create=True)
+
+# Path where to store full-text search indexes.  Relative to this config file.
+HAYSTACK_WHOOSH_PATH = here('whoosh_index')
