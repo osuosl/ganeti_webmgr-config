@@ -82,7 +82,7 @@ DATETIME_FORMAT = "d/m/Y H:i"
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-US'
+LANGUAGE_CODE = 'en_US'
 
 
 ###############################################################################
