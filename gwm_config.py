@@ -24,7 +24,10 @@ MANAGERS = ADMINS
 ############################### S E C U R I T Y ###############################
 # Used for CSRF protection. Use a 16 or 32 bit random string here.
 # Do not share this with anyone.
-SECRET_KEY = 'CHANGE_ME'
+SECRET_KEY = load_secret(env='GWM_SECRET_KEY',
+                         file='.secrets/GWM_SECRET_KEY.txt', create_file=True,
+                         overwrite_file=False, secret_length=50)
+# By the way:
 # Ganeti Web Manager helps you with secrets.  You can use one of following
 # helpers that load this setting from either environment variable or from
 # a file.  In the latter case you can create that file, if it doesn't exist
@@ -144,7 +147,10 @@ RAPI_CONNECT_TIMEOUT = 3
 #     that automatically creates keys per virtual machine. This is just a quick
 #     way of enabled a secure method to pull sshkeys from ganeti web manager
 # Remove the # mark to uncomment and replace CHANGE_ME with a secure value.
-# WEB_MGR_API_KEY = 'CHANGE_ME'
+SECRET_KEY = load_secret(env='GWM_WEBAPI_SECRET_KEY',
+                         file='.secrets/GWM_WEBAPI_SECRET_KEY.txt',
+                         create_file=True, overwrite_file=False,
+                         secret_length=50)
 #
 # Just like SECRET_KEY, you can load WEB_MGR_API_KEY contents from either an
 # environment variable or a file.  Simply use one of the following helpers:
