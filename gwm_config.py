@@ -7,6 +7,10 @@ try:
 except ImportError:
     from ganeti_webmgr.ganeti_web.settings.base import *
 
+###############################################################################
+# General documentation:
+#  http://ganeti-webmgr.rtfd.org/en/latest/getting_started/configuring.html
+###############################################################################
 
 ###############################################################################
 # List of people to get notification whenever Django encounters errors and
@@ -22,11 +26,11 @@ MANAGERS = ADMINS
 
 ###############################################################################
 ############################### S E C U R I T Y ###############################
-# Used for CSRF protection. Use a 16 or 32 bit random string here.
+# Used for CSRF protection. Use a long (at least 20 chars.) random string here.
 # Do not share this with anyone.
 SECRET_KEY = load_secret(env='GWM_SECRET_KEY',
                          file='.secrets/GWM_SECRET_KEY.txt', create_file=True,
-                         overwrite_file=False, secret_length=50)
+                         overwrite_file=False, secret_size=50)
 # By the way:
 # Ganeti Web Manager helps you with secrets.  You can use one of following
 # helpers that load this setting from either environment variable or from
@@ -36,7 +40,7 @@ SECRET_KEY = load_secret(env='GWM_SECRET_KEY',
 # SECRET_KEY = load_secret(env='', file='./.secrets/SECRET_KEY.txt')
 # SECRET_KEY = load_secret(env='', file='./.secrets/SECRET_KEY.txt',
 #                          create_file=True, overwrite_file=False,
-#                          secret_length=50)
+#                          secret_size=50)
 
 
 ###############################################################################
@@ -154,9 +158,10 @@ SECRET_KEY = load_secret(env='GWM_WEBAPI_SECRET_KEY',
 #
 # Just like SECRET_KEY, you can load WEB_MGR_API_KEY contents from either an
 # environment variable or a file.  Simply use one of the following helpers:
-# WEB_MGR_API_KEY = load_setting_env('GWM_MGR_API_KEY')
-# WEB_MGR_API_KEY = load_setting_file('./.secrets/API_KEY.txt')
-# WEB_MGR_API_KEY = load_setting_file('./.secrets/API_KEY.txt', create=True)
+# WEB_MGR_API_KEY = load_secret(env='GWM_WEBAPI_SECRET_KEY')
+# WEB_MGR_API_KEY = load_secret(file='./.secrets/API_KEY.txt')
+# WEB_MGR_API_KEY = load_secret(file='./.secrets/API_KEY.txt',
+#                               create_file=True)
 
 # Path where to store full-text search indexes.  Relative to this config file.
 HAYSTACK_WHOOSH_PATH = here('whoosh_index')
